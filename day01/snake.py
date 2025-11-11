@@ -10,10 +10,13 @@ display_surface = pygame.display.set_mode((WINDOW_WIDTH, WINDOW_HEIGHT))
 pygame.display.set_caption("~~SNEKE~~")
 
 # Set FSP and clock
+FPS = 20
+clock = pygame.time.Clock()
 
 # Set game values
 
 # Set colors
+GREEN = (0, 255, 0)
 
 # Set fonts
 
