@@ -14,17 +14,47 @@ FPS = 20
 clock = pygame.time.Clock()
 
 # Set game values
+SNAKE_SIZE = 20
+
+head_x = WINDOW_WIDTH / 2
+head_y = WINDOW_HEIGHT +100 / 2
+
+snake_dx = 0
+snake_dy = 0
+
+score = 0
 
 # Set colors
+GREEN = (0, 255, 0)  # (r, g, b)
+DARKGREEN = (0, 255, 0)  # (r, g, b)
+
+DARKRED = (150, 0, 0)
+
+WHITE = (255, 255, 255)
+
+
 
 # Set fonts
+font = pygame.font.SysFont('gabriola', 48)
 
 # Set text
+title_text = font.render("~~Snake~~", True, GREEN, DARKRED) #make a text object
+title_rect = title_text.get_rect() # gets the box containing the text object
+title_rect.center = (WINDOW_WIDTH//2, WINDOW_HEIGHT//2) # places the box containing the text object's center to the middle of the screen.
 
+score_text =font.render("Score: 0", True, DARKGREEN, DARKRED)
+score_rect = score_text.get_rect()
+score_rect.topleft = (head_x, head_y)
 # Set sounds and music
+pick_up_sound = pygame.mixer.Sound("pickup_sound.wav")
 
 # Set images (in this case, use simple rects...so just create their coordinates)
 # For a rectangle you need (top-left x, top-left y, width, height)
+apple_coord = (500, 500, SNAKE_SIZE, SNAKE_SIZE)
+apple_rect = pygame.draw.rect(display_surface, RED, apple_coord)
+
+head_coord = (head_x, head_y, SNAKE_SIZE, SNAKE_SIZE)
+head_rect = pygame.Rect(display_surface, GREEN, head_coord)
 
 # The main game loop
 running = True

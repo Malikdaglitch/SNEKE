@@ -35,6 +35,8 @@ GREEN = (0, 255, 0)  # (r, g, b)
 # Set fonts
 
 # Set text
+title_font = font.render('SNEKE', True, GREEN)
+title_rect = title_text.get_rect() # gets the box containing the text object's center to the ,middle
 
 # Set sounds and music
 
@@ -55,6 +57,7 @@ while running:
     # This will essentially move all the snakes body by one position in the list
 
     # Update the x,y position of the snakes head and make a new coordinate
+    apple_coord = (550, 500 , )
 
     # Check for game over
 
