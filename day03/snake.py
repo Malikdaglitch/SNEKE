@@ -1,4 +1,5 @@
 import pygame, random
+from pygame import display
 
 # Initialize pygame
 pygame.init()
@@ -43,7 +44,7 @@ score_text =font.render("Score: 0", True, DARKGREEN, DARKRED)
 score_rect = score_text.get_rect()
 score_rect.topleft = (head_x, head_y)
 # Set sounds and music
-pick_up_sound = pygame.mixer.Sound("pickup_sound.wav")
+pick_up_sound = pygame.mixer.Sound("pick_up_sound.wav")
 
 # Set images (in this case, use simple rects...so just create their coordinates)
 # For a rectangle you need (top-left x, top-left y, width, height)
@@ -51,7 +52,7 @@ apple_coord = (500, 500, SNAKE_SIZE, SNAKE_SIZE)
 apple_rect = pygame.draw.rect(display_surface, RED, apple_coord)
 
 head_coord = (head_x, head_y, SNAKE_SIZE, SNAKE_SIZE)
-head_rect = pygame.Rect(display_surface, GREEN, head_coord)
+head_rect = pygame.draw.rect(display_surface, GREEN, head_coord)
 
 # The main game loop
 running = True
@@ -73,14 +74,22 @@ while running:
     # Check for collisions
 
     # Update HUD
-
-    # Fill the surface
+    score_text = font.render(f"Score: {score}", True, DARKGREEN, DARKRED)
+    display_surface.fill(WHITE)
 
     # Blit HUD
+    display_surface.blit(title_text, title_rect)
+    display_surface.blit(score_text, score_rect)
 
     # Blit assets
+    pygame.draw.rect(display_surface, GREEN, head_coord)
+    pygame.draw.rect(display_surface, RED, apple_coord)
 
     # Update display and tick clock
+    pygame.display.update()
+    clock.tick(20)
+
+
 
 # End the game
 pygame.quit()
